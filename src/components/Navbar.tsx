@@ -23,22 +23,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onReplayIntro }) => {
   // Complete Exhibition Index for Full Drawer
   const FULL_INDEX = [
     { index: '00', label: 'THE MONOLITH STAGE', href: '#top' },
-    { index: '01', label: 'VENTURES ATELIER', href: '#ventures' },
-    { index: '02', label: 'THE ARENA (COMPETITIONS)', href: '#hackathons' },
-    { index: '03', label: 'HACKATHON SHOWCASE (LIVE SITES)', href: '#hackathon-showcase' },
-    { index: '04', label: 'SOLO ARCHITECTURE (FASAL NITI)', href: '#solo' },
-    { index: '05', label: 'PROJECT ARCHIVE (LIVE EMBEDS)', href: '#archive' },
-    { index: '06', label: '3D SPATIAL STUDIO (DIGITAL ME)', href: '#3d-gallery' },
-    { index: '07', label: 'THE DUAL HORIZON (THEATRE & SOUND)', href: '#cultural-studio' },
-    { index: '08', label: 'THE VAULT OF THE UNSAID (POETRY)', href: '#unsaid' },
-    { index: '09', label: 'THE BLACK BOX (TERMINAL)', href: '#terminal' },
-    { index: '10', label: 'TRANSMISSION & UPLINK', href: '#contact' },
+    { index: '01', label: 'THE LIVING ARCHIVES (PHOTOGRAPHY)', href: '#living-archives' },
+    { index: '02', label: 'VENTURES ATELIER', href: '#ventures' },
+    { index: '03', label: 'THE ARENA (COMPETITIONS)', href: '#hackathons' },
+    { index: '04', label: 'HACKATHON SHOWCASE (LIVE SITES)', href: '#hackathon-showcase' },
+    { index: '05', label: 'SOLO ARCHITECTURE (FASAL NITI)', href: '#solo' },
+    { index: '06', label: 'PROJECT ARCHIVE (LIVE EMBEDS)', href: '#archive' },
+    { index: '07', label: '3D SPATIAL STUDIO (DIGITAL ME)', href: '#3d-gallery' },
+    { index: '08', label: 'THE DUAL HORIZON (THEATRE & SOUND)', href: '#cultural-studio' },
+    { index: '09', label: 'THE VAULT OF THE UNSAID (POETRY)', href: '#unsaid' },
+    { index: '10', label: 'THE BLACK BOX (TERMINAL)', href: '#terminal' },
+    { index: '11', label: 'TRANSMISSION & UPLINK', href: '#contact' },
   ];
 
   // Scrollspy to detect active section in viewport
   useEffect(() => {
     const sectionIds = [
       'top',
+      'living-archives',
       'ventures',
       'hackathons',
       'hackathon-showcase',

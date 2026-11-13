@@ -16,6 +16,7 @@ import { TerminalMatrix } from './components/TerminalMatrix';
 import { Footer } from './components/Footer';
 import { CinematicIntro } from './components/CinematicIntro';
 import { AfterHoursInterface } from './components/after-hours/AfterHoursInterface';
+import { HarmonicResonanceCanvas } from './components/resonance/HarmonicResonanceCanvas';
 
 export const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState<boolean>(() => {
@@ -98,6 +99,9 @@ export const App: React.FC = () => {
         {/* Continuous Micro-Grain Texture across the entire canvas */}
         <div className="absolute inset-0 bg-grain opacity-30 mix-blend-overlay" />
       </div>
+
+      {/* Persistent Dual-Harmonic Resonance Strand (Akai Ito-inspired Visual Continuity) */}
+      <HarmonicResonanceCanvas />
 
       {/* 22-24s Cinematic Intro Overlay */}
       {showIntro && (

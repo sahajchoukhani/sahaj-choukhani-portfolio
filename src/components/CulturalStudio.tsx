@@ -32,6 +32,7 @@ import {
 import { CardSpotlight } from './ui/CardSpotlight';
 import { BorderBeam } from './ui/BorderBeam';
 import { sound } from '../services/soundEngine';
+import { AcousticWaveformVisualizer } from './cultural/AcousticWaveformVisualizer';
 
 export const CulturalStudio: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'stage' | 'soundroom' | 'poetry' | 'stories' | 'voice'>('stage');
@@ -306,21 +307,11 @@ export const CulturalStudio: React.FC = () => {
                   Classical piano training encompassing polyphonic counterpoint, lyrical cantabile phrasing, and emotional resonance alongside classical vocal breath control.
                 </p>
 
-                {/* Animated Equalizer Waveform */}
-                <div className="flex items-end gap-1.5 h-8 p-2 rounded-xl bg-black/40 border border-white/5 w-fit">
-                  {[4, 8, 3, 7, 5, 9, 4, 6, 8, 3, 7, 5].map((h, idx) => (
-                    <span
-                      key={idx}
-                      className={`w-1.5 rounded-full bg-yellow-400 transition-all ${
-                        isPlayingAudio ? 'animate-pulse' : 'opacity-40'
-                      }`}
-                      style={{ height: isPlayingAudio ? `${(h * 3)}px` : '6px' }}
-                    />
-                  ))}
-                  <span className="text-[10px] font-mono text-neutral-400 ml-2">
-                    {isPlayingAudio ? '44.1 kHz Procedural Sound' : 'Paused'}
-                  </span>
-                </div>
+                {/* Real-time Interactive Acoustic Waveform Simulation */}
+                <AcousticWaveformVisualizer 
+                  isPlaying={isPlayingAudio} 
+                  trackTitle={currentTrackTitle} 
+                />
               </div>
 
               {/* Authentic 1st Place Competition Honor Photograph */}

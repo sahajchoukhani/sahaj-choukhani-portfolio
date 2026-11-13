@@ -287,6 +287,31 @@ export const CinematicOpeningMontage: React.FC = () => {
         </div>
       </motion.div>
 
+      {/* Cinematic Transition Threshold into Section 02 / 03 */}
+      <div className="pt-12 sm:pt-16 pb-4 flex flex-col items-center justify-center">
+        <a
+          href="#ventures"
+          onClick={(e) => {
+            e.preventDefault();
+            sound.playTactileClick();
+            const el = document.getElementById('ventures');
+            const lenis = (window as unknown as { __lenis?: { scrollTo: (target: HTMLElement, opts?: { offset?: number; duration?: number }) => void } }).__lenis;
+            if (el) {
+              if (lenis) lenis.scrollTo(el, { offset: -30, duration: 1.2 });
+              else el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          onMouseEnter={() => sound.playHoverTone()}
+          className="group flex flex-col items-center gap-2 text-neutral-500 hover:text-cyan-400 transition-colors cursor-pointer select-none"
+          aria-label="Descend to Section 03 Ventures Atelier"
+        >
+          <span className="text-[10px] font-mono tracking-[0.25em] text-neutral-500 group-hover:text-cyan-300 uppercase transition-colors">
+            TRANSITION // 02 THE VENTURES ATELIER
+          </span>
+          <div className="w-[1px] h-10 bg-gradient-to-b from-cyan-400/80 via-white/20 to-transparent group-hover:h-14 transition-all duration-300" />
+        </a>
+      </div>
+
       {/* Lightbox Modal for Immersive Full-Screen Inspection */}
       {activeLightboxPiece && (
         <div
