@@ -181,6 +181,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onReplayIntro }) => {
             </button>
           )}
 
+          {/* Subtle After Hours Discovery Trigger (Desktop) */}
+          <button
+            onClick={() => {
+              sound.playTactileClick();
+              window.dispatchEvent(new CustomEvent('open-after-hours'));
+            }}
+            onMouseEnter={() => sound.playHoverTone()}
+            className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 border border-white/10 hover:border-amber-400/50 bg-white/[0.02] hover:bg-amber-400/5 text-neutral-400 hover:text-amber-300 font-mono text-[11px] tracking-wider transition-all select-none group"
+            title="Open After Hours Command Interface (Cmd+K)"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400/60 group-hover:bg-amber-400 transition-colors animate-pulse" />
+            <span className="hidden xl:inline text-neutral-400 group-hover:text-neutral-300">AFTER HOURS</span>
+            <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-[9px] text-neutral-400 group-hover:text-amber-300 font-sans font-semibold">
+              ⌘K
+            </kbd>
+          </button>
+
           <SoundToggle />
 
           <a
@@ -245,27 +262,42 @@ export const Navbar: React.FC<NavbarProps> = ({ onReplayIntro }) => {
               ))}
             </div>
 
-            {onReplayIntro && (
-              <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-3">
+                {onReplayIntro && (
+                  <button
+                    onClick={() => {
+                      sound.playTactileClick();
+                      setMobileMenuOpen(false);
+                      onReplayIntro();
+                    }}
+                    className="flex items-center gap-2.5 px-4 py-2 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-400 font-mono text-xs tracking-wider transition-all"
+                  >
+                    <Film className="w-4 h-4" />
+                    <span>REPLAY 23.5s CINEMATIC PROLOGUE</span>
+                    <Sparkles className="w-3.5 h-3.5 ml-1" />
+                  </button>
+                )}
+
                 <button
                   onClick={() => {
                     sound.playTactileClick();
                     setMobileMenuOpen(false);
-                    onReplayIntro();
+                    window.dispatchEvent(new CustomEvent('open-after-hours'));
                   }}
-                  className="flex items-center gap-2.5 px-4 py-2 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-400 font-mono text-xs tracking-wider transition-all"
+                  className="flex items-center gap-2.5 px-4 py-2 bg-white/[0.03] hover:bg-white/[0.08] border border-white/15 text-neutral-300 hover:text-amber-300 font-mono text-xs tracking-wider transition-all"
                 >
-                  <Film className="w-4 h-4" />
-                  <span>REPLAY 23.5s CINEMATIC PROLOGUE</span>
-                  <Sparkles className="w-3.5 h-3.5 ml-1" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                  <span>AFTER HOURS PALETTE</span>
+                  <span className="text-[10px] bg-white/[0.08] px-1.5 py-0.5 border border-white/10 rounded font-sans">⌘K</span>
                 </button>
-
-                <div className="text-[11px] font-mono text-neutral-500 flex items-center gap-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>GROUND TRUTH: DRUSAVI &bull; NYAY LINK &bull; FASAL NITI &bull; LESS GO</span>
-                </div>
               </div>
-            )}
+
+              <div className="text-[11px] font-mono text-neutral-500 flex items-center gap-2">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>GROUND TRUTH: DRUSAVI &bull; NYAY LINK &bull; FASAL NITI &bull; LESS GO</span>
+              </div>
+            </div>
           </div>
         </div>
       )}

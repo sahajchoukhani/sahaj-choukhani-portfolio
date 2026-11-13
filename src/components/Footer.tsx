@@ -174,7 +174,20 @@ export const Footer: React.FC = () => {
         <div>
           &copy; {new Date().getFullYear()} Sahaj. All rights reserved.
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
+          <button
+            onClick={() => {
+              sound.playTactileClick();
+              window.dispatchEvent(new CustomEvent('open-after-hours'));
+            }}
+            onMouseEnter={() => sound.playHoverTone()}
+            className="hover:text-amber-300 transition-colors flex items-center gap-1.5 select-none"
+            title="Open After Hours Command Interface (Cmd+K)"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400/60 animate-pulse" />
+            <span>AFTER HOURS [ ⌘K ]</span>
+          </button>
+          <span className="hidden sm:inline">&bull;</span>
           <span>Google Antigravity &bull; React &bull; Tailwind</span>
           <a
             href="#top"

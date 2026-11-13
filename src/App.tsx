@@ -15,6 +15,7 @@ import { TheShapeOfTheUnsaid } from './components/TheShapeOfTheUnsaid';
 import { TerminalMatrix } from './components/TerminalMatrix';
 import { Footer } from './components/Footer';
 import { CinematicIntro } from './components/CinematicIntro';
+import { AfterHoursInterface } from './components/after-hours/AfterHoursInterface';
 
 export const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState<boolean>(() => {
@@ -124,6 +125,9 @@ export const App: React.FC = () => {
 
       {/* Footer & Contact */}
       <Footer />
+
+      {/* Hidden Experimental Interface: AFTER HOURS (Cmd+K / Ctrl+K) */}
+      <AfterHoursInterface />
     </div>
   );
 };
