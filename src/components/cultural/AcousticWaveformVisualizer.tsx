@@ -142,3 +142,4 @@ export const AcousticWaveformVisualizer: React.FC<AcousticWaveformVisualizerProp
     </div>
   );
 };
+

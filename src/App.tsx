@@ -17,6 +17,12 @@ import { Footer } from './components/Footer';
 import { CinematicIntro } from './components/CinematicIntro';
 import { AfterHoursInterface } from './components/after-hours/AfterHoursInterface';
 import { HarmonicResonanceCanvas } from './components/resonance/HarmonicResonanceCanvas';
+import { ApertureTunnelInterstitial } from './components/interstitials/ApertureTunnelInterstitial';
+import { PrismPortalInterstitial } from './components/interstitials/PrismPortalInterstitial';
+import { ColosseumThresholdInterstitial } from './components/interstitials/ColosseumThresholdInterstitial';
+import { ResonantSilenceInterstitial } from './components/interstitials/ResonantSilenceInterstitial';
+import { InkVoidInterstitial } from './components/interstitials/InkVoidInterstitial';
+import { BedrockChasmInterstitial } from './components/interstitials/BedrockChasmInterstitial';
 
 export const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState<boolean>(() => {
@@ -114,16 +120,22 @@ export const App: React.FC = () => {
       {/* Main Flow */}
       <main className="flex-1 relative z-10">
         <Hero />
+        <ApertureTunnelInterstitial />
         <CinematicOpeningMontage />
         <AccoladesTicker />
+        <PrismPortalInterstitial />
         <StartupsSection />
+        <ColosseumThresholdInterstitial />
         <HackathonVault />
         <HackathonShowcase />
         <SoloEngineeringSection />
         <ProjectArchiveSection />
         <Interactive3DGallery />
+        <ResonantSilenceInterstitial />
         <CulturalStudio />
+        <InkVoidInterstitial />
         <TheShapeOfTheUnsaid />
+        <BedrockChasmInterstitial />
         <TerminalMatrix />
       </main>
 
