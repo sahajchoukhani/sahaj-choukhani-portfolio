@@ -236,3 +236,4 @@ export const Scene04Reveal: React.FC = () => {
     </div>
   );
 };
+

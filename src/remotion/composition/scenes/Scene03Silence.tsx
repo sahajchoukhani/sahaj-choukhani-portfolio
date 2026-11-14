@@ -58,3 +58,4 @@ export const Scene03Silence: React.FC = () => {
     </div>
   );
 };
+

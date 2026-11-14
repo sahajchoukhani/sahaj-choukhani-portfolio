@@ -386,3 +386,4 @@ export const Scene02VelocityMontage: React.FC = () => {
     </div>
   );
 };
+

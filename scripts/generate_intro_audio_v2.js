@@ -246,3 +246,4 @@ const masterAudio = generateMasterV2();
 const wavBuffer = createWavBuffer(masterAudio.left, masterAudio.right);
 fs.writeFileSync(audioPath, wavBuffer);
 console.log(`Saved master audio track to ${audioPath} (${(wavBuffer.length / 1024 / 1024).toFixed(2)} MB)`);
+
