@@ -167,17 +167,13 @@ export const RemotionCinematicIntro: React.FC<RemotionCinematicIntroProps> = ({ 
           <span className="text-white font-semibold">THE MAKING OF SAHAJ</span>
           <span className="text-neutral-500">//</span>
           <span className="text-cyan-400">
-            {currentFrame < 90
-              ? 'ACT 01: ANTICIPATION'
-              : currentFrame < 210
-              ? 'ACT 02: THE FIRST SPARK'
-              : currentFrame < 345
-              ? 'ACT 03: THE PROOF'
-              : currentFrame < 465
-              ? 'ACT 04: THE BUILDER'
-              : currentFrame < 585
-              ? 'ACT 05: THE UNSAID'
-              : 'ACT 06: THE REVEAL'}
+            {currentFrame < 54
+              ? 'PHASE 01: IGNITION'
+              : currentFrame < 234
+              ? 'PHASE 02: VELOCITY MONTAGE'
+              : currentFrame < 264
+              ? 'PHASE 03: SILENCE'
+              : 'PHASE 04: THE REVEAL'}
           </span>
         </div>
 

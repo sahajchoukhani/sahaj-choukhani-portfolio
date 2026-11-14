@@ -1,68 +1,57 @@
 import React from 'react';
 import { useCurrentFrame, interpolate, spring, staticFile, Img, useVideoConfig } from 'remotion';
-import { ReticleOverlay } from '../components/ReticleOverlay';
 
-export const Act06TheReveal: React.FC = () => {
-  const frame = useCurrentFrame(); // 0 to 120 (19.5s – 23.5s)
+export const Scene04Reveal: React.FC = () => {
+  const frame = useCurrentFrame(); // 0 to 81 (8.80s – 11.50s)
   const { fps } = useVideoConfig();
 
-  // Reveal impact spring
-  const impactSpring = spring({
-    frame,
+  // Impact Flash on Frame 0
+  const flash = interpolate(frame, [0, 8], [1.0, 0], { extrapolateRight: 'clamp' });
+
+  // Camera Slow Push-in
+  const scale = interpolate(frame, [0, 81], [1.06, 1.0], { extrapolateRight: 'clamp' });
+
+  // Volumetric Specular Light Sweep across portrait (frames 0 to 35)
+  const sweepX = interpolate(frame, [0, 40], [-100, 200]);
+
+  // Spring entrance for title
+  const titleSpring = spring({
+    frame: Math.max(0, frame - 10),
     fps,
-    config: { damping: 18, stiffness: 60, mass: 1.2 },
+    config: { damping: 16, stiffness: 80, mass: 1 },
   });
 
-  // Portrait push-in & emergence
-  const portraitScale = interpolate(frame, [0, 120], [1.08, 1.0], { extrapolateRight: 'clamp' });
-  const portraitOpacity = interpolate(frame, [0, 20], [0, 1], { extrapolateRight: 'clamp' });
+  const titleOpacity = interpolate(frame, [8, 22], [0, 1], { extrapolateRight: 'clamp' });
+  const titleY = interpolate(titleSpring, [0, 1], [40, 0]);
 
-  // Light sweep across portrait (0 to 45)
-  const lightSweepX = interpolate(frame, [0, 45], [-100, 200]);
-
-  // Flash on initial reveal impact
-  const flash = interpolate(frame, [0, 8], [0.95, 0], { extrapolateRight: 'clamp' });
-
-  // Final Title emergence (starts at frame 40)
-  const titleOpacity = interpolate(frame, [40, 65], [0, 1], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
-  const titleY = interpolate(frame, [40, 65], [30, 0], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
-
-  const subtitleOpacity = interpolate(frame, [55, 80], [0, 1], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
+  // Subtitle fade in
+  const subtitleOpacity = interpolate(frame, [20, 36], [0, 1], { extrapolateRight: 'clamp' });
 
   return (
     <div
       style={{
         position: 'absolute',
         inset: 0,
-        backgroundColor: '#05070a',
+        backgroundColor: '#040508',
         overflow: 'hidden',
       }}
     >
-      {/* Background Volumetric Atmosphere */}
+      {/* Background Deep Metallic Radial Atmosphere */}
       <div
         style={{
           position: 'absolute',
-          top: '30%',
+          top: '35%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '1200px',
-          height: '800px',
-          background: 'radial-gradient(ellipse at center, rgba(16, 32, 54, 0.45) 0%, rgba(8, 16, 26, 0.2) 50%, transparent 80%)',
-          filter: 'blur(60px)',
+          width: '1400px',
+          height: '900px',
+          background: 'radial-gradient(ellipse at center, rgba(14, 30, 48, 0.55) 0%, rgba(6, 12, 20, 0.3) 50%, transparent 80%)',
+          filter: 'blur(70px)',
         }}
       />
 
       {/* ------------------------------------------------------------- */}
-      {/* SHOT 6.1: AUTHENTIC REAL PORTRAIT OF SAHAJ                    */}
+      {/* AUTHENTIC STUDIO PORTRAIT OF SAHAJ                            */}
       {/* ------------------------------------------------------------- */}
       <div
         style={{
@@ -71,68 +60,68 @@ export const Act06TheReveal: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          opacity: portraitOpacity,
-          transform: `scale(${portraitScale})`,
+          transform: `scale(${scale})`,
           zIndex: 10,
         }}
       >
         <div
           style={{
             position: 'relative',
-            maxHeight: '92vh',
-            maxWidth: '55vw',
+            maxHeight: '90vh',
+            maxWidth: '56vw',
             borderRadius: '8px',
             overflow: 'hidden',
-            boxShadow: '0 30px 60px rgba(0, 0, 0, 0.95), 0 0 50px rgba(0, 240, 255, 0.15)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
+            boxShadow: '0 30px 70px rgba(0, 0, 0, 0.98), 0 0 60px rgba(0, 240, 255, 0.2)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            backgroundColor: '#05070a',
           }}
         >
           <Img
             src={staticFile('photos/intro/Portrait.png')}
             style={{
-              maxHeight: '88vh',
+              maxHeight: '86vh',
               maxWidth: '100%',
               display: 'block',
               objectFit: 'contain',
             }}
           />
 
-          {/* Specular Light Sweep Ray */}
+          {/* Diagonal Specular Anamorphic Ray */}
           <div
             style={{
               position: 'absolute',
               top: '-50%',
               bottom: '-50%',
-              width: '120px',
-              left: `${lightSweepX}%`,
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%)',
+              width: '140px',
+              left: `${sweepX}%`,
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%)',
               transform: 'rotate(25deg)',
+              filter: 'blur(12px)',
               pointerEvents: 'none',
-              filter: 'blur(10px)',
             }}
           />
 
-          {/* Subtle bottom vignette fade */}
+          {/* Bottom Gradient Fade for Typography Legibility */}
           <div
             style={{
               position: 'absolute',
               bottom: 0,
               left: 0,
               right: 0,
-              height: '35%',
-              background: 'linear-gradient(to top, rgba(5, 7, 10, 0.95) 0%, transparent 100%)',
+              height: '45%',
+              background: 'linear-gradient(to top, rgba(4, 5, 8, 0.98) 0%, rgba(4, 5, 8, 0.6) 50%, transparent 100%)',
             }}
           />
         </div>
       </div>
 
       {/* ------------------------------------------------------------- */}
-      {/* SHOT 6.2: MONOLITHIC EDITORIAL CLIMAX TYPOGRAPHY              */}
+      {/* MONUMENTAL EDITORIAL CLIMAX TYPOGRAPHY                         */}
       {/* ------------------------------------------------------------- */}
       <div
         style={{
           position: 'absolute',
-          bottom: 80,
+          bottom: 75,
           left: 0,
           right: 0,
           textAlign: 'center',
@@ -140,61 +129,77 @@ export const Act06TheReveal: React.FC = () => {
           pointerEvents: 'none',
         }}
       >
-        {/* Main Title */}
         <div
           style={{
             opacity: titleOpacity,
             transform: `translateY(${titleY}px)`,
           }}
         >
+          {/* Main Name Reveal */}
           <h1
             style={{
               fontFamily: "'Space Grotesk', 'Inter', sans-serif",
-              fontSize: '52px',
-              fontWeight: 800,
+              fontSize: '58px',
+              fontWeight: 900,
               letterSpacing: '0.08em',
               color: '#ffffff',
-              margin: '0 0 10px 0',
-              textShadow: '0 0 40px rgba(0, 240, 255, 0.4), 0 4px 20px rgba(0, 0, 0, 0.9)',
+              margin: '0 0 8px 0',
               textTransform: 'uppercase',
+              textShadow: '0 0 50px rgba(0, 240, 255, 0.5), 0 4px 30px rgba(0, 0, 0, 0.95)',
             }}
           >
-            THE SHAPE OF THE UNSAID.
+            SAHAJ CHOUKHANI
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle Roles */}
+          <div
+            style={{
+              opacity: subtitleOpacity,
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '13px',
+              fontWeight: 600,
+              letterSpacing: '0.35em',
+              color: 'rgba(0, 240, 255, 0.9)',
+              textTransform: 'uppercase',
+              marginBottom: '10px',
+            }}
+          >
+            FOUNDER • TECHNOLOGIST • MUSICIAN
+          </div>
+
+          {/* Tagline */}
           <div
             style={{
               opacity: subtitleOpacity,
               fontFamily: "'Inter', sans-serif",
-              fontSize: '20px',
+              fontSize: '18px',
               fontStyle: 'italic',
+              letterSpacing: '0.03em',
               color: 'rgba(255, 255, 255, 0.85)',
-              letterSpacing: '0.04em',
               marginBottom: '16px',
             }}
           >
-            I give form to what I cannot explain.
+            "The Shape of the Unsaid — I give form to what I cannot explain."
           </div>
 
-          {/* Identity & Navigation cue */}
+          {/* System Online Badge */}
           <div
             style={{
               opacity: subtitleOpacity,
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '12px',
-              backgroundColor: 'rgba(8, 12, 18, 0.8)',
-              border: '1px solid rgba(0, 240, 255, 0.35)',
-              padding: '8px 20px',
+              gap: '10px',
+              backgroundColor: 'rgba(8, 14, 22, 0.85)',
+              border: '1px solid rgba(0, 240, 255, 0.4)',
+              padding: '6px 18px',
               borderRadius: '999px',
-              boxShadow: '0 0 25px rgba(0, 240, 255, 0.2)',
+              boxShadow: '0 0 25px rgba(0, 240, 255, 0.25)',
             }}
           >
             <span
               style={{
-                width: '8px',
-                height: '8px',
+                width: '7px',
+                height: '7px',
                 borderRadius: '50%',
                 backgroundColor: '#00f0ff',
                 boxShadow: '0 0 10px #00f0ff',
@@ -203,19 +208,19 @@ export const Act06TheReveal: React.FC = () => {
             <span
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '12px',
+                fontSize: '11px',
                 fontWeight: 600,
                 color: '#ffffff',
                 letterSpacing: '0.2em',
               }}
             >
-              SAHAJ // FOUNDER • TECHNOLOGIST • MUSICIAN
+              PORTFOLIO INITIALIZED // ENTER
             </span>
           </div>
         </div>
       </div>
 
-      {/* Optical Transition Flash */}
+      {/* Explosive Reveal Flash */}
       {flash > 0 && (
         <div
           style={{
@@ -224,17 +229,10 @@ export const Act06TheReveal: React.FC = () => {
             backgroundColor: '#ffffff',
             opacity: flash,
             pointerEvents: 'none',
-            zIndex: 35,
+            zIndex: 40,
           }}
         />
       )}
-
-      {/* Reticle Overlay */}
-      <ReticleOverlay
-        actLabel="ACT 06 // THE REVEAL"
-        shotTelemetry="TRANSMISSION COMPLETE // SYSTEM PRIMED"
-      />
     </div>
   );
 };
-

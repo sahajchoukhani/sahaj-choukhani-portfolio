@@ -5,17 +5,14 @@ export interface IntroProps {
   overlayOpacity?: number;
 }
 
-export const TOTAL_FRAMES = 705; // 23.5 seconds @ 30fps
+export const TOTAL_FRAMES = 345; // 11.5 seconds @ 30fps
 export const FPS = 30;
 export const COMP_WIDTH = 1920;
 export const COMP_HEIGHT = 1080;
 
-export const ACT_BOUNDARIES = {
-  act1: { start: 0, end: 90 },       // 0.0s – 3.0s: System Anticipation
-  act2: { start: 90, end: 210 },     // 3.0s – 7.0s: The First Spark (Key, Piano, Wire)
-  act3: { start: 210, end: 345 },    // 7.0s – 11.5s: The Proof (Hackathons & Podiums)
-  act4: { start: 345, end: 465 },    // 11.5s – 15.5s: The Builder (Nyay Link, Fasal Niti)
-  act5: { start: 465, end: 585 },    // 15.5s – 19.5s: The Unsaid (Theatre, Music & Silence)
-  act6: { start: 585, end: 705 },    // 19.5s – 23.5s: The Reveal & The Shape of the Unsaid
+export const SCENE_BOUNDARIES = {
+  ignition: { start: 0, end: 54 },       // 0.0s – 1.8s: Optical Shutter & Macro Switch Ignition
+  montage: { start: 54, end: 234 },      // 1.8s – 7.8s: Hyper-Speed Dimensional Achievements Montage (10 shots)
+  silence: { start: 234, end: 264 },     // 7.8s – 8.8s: THE MOMENT OF SILENCE (Everything Stops, 0 dB)
+  reveal: { start: 264, end: 345 },      // 8.8s – 11.5s: THE FINAL REVEAL (Portrait + SAHAJ CHOUKHANI Climax)
 } as const;
-

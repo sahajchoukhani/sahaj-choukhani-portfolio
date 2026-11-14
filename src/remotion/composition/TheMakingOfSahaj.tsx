@@ -1,13 +1,10 @@
 import React from 'react';
-import { Sequence } from 'remotion';
-import { IntroProps, ACT_BOUNDARIES } from '../types';
-import { Act01Anticipation } from './acts/Act01Anticipation';
-import { Act02FirstSpark } from './acts/Act02FirstSpark';
-import { Act03TheProof } from './acts/Act03TheProof';
-import { Act04TheBuilder } from './acts/Act04TheBuilder';
-import { Act05TheUnsaid } from './acts/Act05TheUnsaid';
-import { Act06TheReveal } from './acts/Act06TheReveal';
-import { IntroSoundDesign } from './audio/IntroSoundDesign';
+import { Sequence, Audio, staticFile } from 'remotion';
+import { IntroProps, SCENE_BOUNDARIES } from '../types';
+import { Scene01Ignition } from './scenes/Scene01Ignition';
+import { Scene02VelocityMontage } from './scenes/Scene02VelocityMontage';
+import { Scene03Silence } from './scenes/Scene03Silence';
+import { Scene04Reveal } from './scenes/Scene04Reveal';
 import { FilmGrainOverlay } from './components/FilmGrainOverlay';
 import { Letterbox } from './components/Letterbox';
 
@@ -18,72 +15,57 @@ export const TheMakingOfSahaj: React.FC<IntroProps> = ({ isMuted = false }) => {
         position: 'relative',
         width: 1920,
         height: 1080,
-        backgroundColor: '#05070a',
+        backgroundColor: '#040508',
         overflow: 'hidden',
       }}
     >
       {/* ------------------------------------------------------------- */}
-      {/* 1. VISUAL ACT SEQUENCES (6 ACTS, 705 FRAMES TOTAL)           */}
+      {/* 1. SCENE SEQUENCES (4 SCENES, 345 FRAMES / 11.50s TOTAL)      */}
       {/* ------------------------------------------------------------- */}
 
-      {/* ACT 1: SYSTEM ANTICIPATION (0.0s – 3.0s | Frames 0 – 90) */}
+      {/* SCENE 1: THE IGNITION (Frames 0 – 54 | 0.0s – 1.8s) */}
       <Sequence
-        from={ACT_BOUNDARIES.act1.start}
-        durationInFrames={ACT_BOUNDARIES.act1.end - ACT_BOUNDARIES.act1.start}
-        name="Act 1: System Anticipation"
+        from={SCENE_BOUNDARIES.ignition.start}
+        durationInFrames={SCENE_BOUNDARIES.ignition.end - SCENE_BOUNDARIES.ignition.start}
+        name="Scene 1: The Ignition"
       >
-        <Act01Anticipation />
+        <Scene01Ignition />
       </Sequence>
 
-      {/* ACT 2: THE FIRST SPARK (3.0s – 7.0s | Frames 90 – 210) */}
+      {/* SCENE 2: VELOCITY MONTAGE (Frames 54 – 234 | 1.8s – 7.8s) */}
       <Sequence
-        from={ACT_BOUNDARIES.act2.start}
-        durationInFrames={ACT_BOUNDARIES.act2.end - ACT_BOUNDARIES.act2.start}
-        name="Act 2: The First Spark"
+        from={SCENE_BOUNDARIES.montage.start}
+        durationInFrames={SCENE_BOUNDARIES.montage.end - SCENE_BOUNDARIES.montage.start}
+        name="Scene 2: Velocity Montage"
       >
-        <Act02FirstSpark />
+        <Scene02VelocityMontage />
       </Sequence>
 
-      {/* ACT 3: THE PROOF (7.0s – 11.5s | Frames 210 – 345) */}
+      {/* SCENE 3: THE MOMENT OF SILENCE (Frames 234 – 264 | 7.8s – 8.8s) */}
       <Sequence
-        from={ACT_BOUNDARIES.act3.start}
-        durationInFrames={ACT_BOUNDARIES.act3.end - ACT_BOUNDARIES.act3.start}
-        name="Act 3: The Proof"
+        from={SCENE_BOUNDARIES.silence.start}
+        durationInFrames={SCENE_BOUNDARIES.silence.end - SCENE_BOUNDARIES.silence.start}
+        name="Scene 3: The Moment of Silence"
       >
-        <Act03TheProof />
+        <Scene03Silence />
       </Sequence>
 
-      {/* ACT 4: THE BUILDER (11.5s – 15.5s | Frames 345 – 465) */}
+      {/* SCENE 4: THE FINAL REVEAL (Frames 264 – 345 | 8.8s – 11.5s) */}
       <Sequence
-        from={ACT_BOUNDARIES.act4.start}
-        durationInFrames={ACT_BOUNDARIES.act4.end - ACT_BOUNDARIES.act4.start}
-        name="Act 4: The Builder"
+        from={SCENE_BOUNDARIES.reveal.start}
+        durationInFrames={SCENE_BOUNDARIES.reveal.end - SCENE_BOUNDARIES.reveal.start}
+        name="Scene 4: The Final Reveal"
       >
-        <Act04TheBuilder />
-      </Sequence>
-
-      {/* ACT 5: THE UNSAID (15.5s – 19.5s | Frames 465 – 585) */}
-      <Sequence
-        from={ACT_BOUNDARIES.act5.start}
-        durationInFrames={ACT_BOUNDARIES.act5.end - ACT_BOUNDARIES.act5.start}
-        name="Act 5: The Unsaid"
-      >
-        <Act05TheUnsaid />
-      </Sequence>
-
-      {/* ACT 6: THE REVEAL (19.5s – 23.5s | Frames 585 – 705) */}
-      <Sequence
-        from={ACT_BOUNDARIES.act6.start}
-        durationInFrames={ACT_BOUNDARIES.act6.end - ACT_BOUNDARIES.act6.start}
-        name="Act 6: The Reveal"
-      >
-        <Act06TheReveal />
+        <Scene04Reveal />
       </Sequence>
 
       {/* ------------------------------------------------------------- */}
-      {/* 2. AUDIO LAYER (EXACT FRAME SYNCHRONIZATION)                  */}
+      {/* 2. MASTER AUDIO LAYER (11.50s EXACT FRAME SYNCHRONIZATION)    */}
       {/* ------------------------------------------------------------- */}
-      <IntroSoundDesign isMuted={isMuted} />
+      <Audio
+        src={staticFile('audio/the_making_of_sahaj_v2.wav')}
+        volume={isMuted ? 0 : 1}
+      />
 
       {/* ------------------------------------------------------------- */}
       {/* 3. CINEMATIC OVERLAYS                                         */}
@@ -93,4 +75,3 @@ export const TheMakingOfSahaj: React.FC<IntroProps> = ({ isMuted = false }) => {
     </div>
   );
 };
-
