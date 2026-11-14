@@ -1,12 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Rocket, ShieldCheck, Layers, Terminal } from 'lucide-react';
-import { sound } from '../../services/soundEngine';
 
 export const PrismPortalInterstitial: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
-  const hasTriggeredAudio = useRef(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -31,18 +29,6 @@ export const PrismPortalInterstitial: React.FC = () => {
   // Typography tracking
   const titleY = useTransform(scrollYProgress, [0.25, 0.65], [40, -40]);
   const titleOpacity = useTransform(scrollYProgress, [0.2, 0.4, 0.6, 0.8], [0, 1, 1, 0]);
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (v) => {
-      if (v > 0.4 && v < 0.6 && !hasTriggeredAudio.current) {
-        hasTriggeredAudio.current = true;
-        sound.playTightTransitionSwish();
-      } else if (v <= 0.2 || v >= 0.8) {
-        hasTriggeredAudio.current = false;
-      }
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress]);
 
   const ventures = [
     { num: '01', name: 'DRUSAVI', role: 'FOUNDER', color: 'text-cyan-400 border-cyan-500/40 bg-cyan-950/40' },

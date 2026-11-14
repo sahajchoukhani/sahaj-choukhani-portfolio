@@ -1,12 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Trophy, Award, Flame, Zap } from 'lucide-react';
-import { sound } from '../../services/soundEngine';
 
 export const ColosseumThresholdInterstitial: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
-  const hasTriggeredAudio = useRef(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -31,18 +29,6 @@ export const ColosseumThresholdInterstitial: React.FC = () => {
   const textScale = useTransform(scrollYProgress, [0.25, 0.6], [0.9, 1.12]);
   const textY = useTransform(scrollYProgress, [0.25, 0.65], [40, -40]);
   const textOpacity = useTransform(scrollYProgress, [0.2, 0.4, 0.6, 0.8], [0, 1, 1, 0]);
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (v) => {
-      if (v > 0.4 && v < 0.6 && !hasTriggeredAudio.current) {
-        hasTriggeredAudio.current = true;
-        sound.playSubBassPunch(55);
-      } else if (v <= 0.2 || v >= 0.8) {
-        hasTriggeredAudio.current = false;
-      }
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress]);
 
   return (
     <div 

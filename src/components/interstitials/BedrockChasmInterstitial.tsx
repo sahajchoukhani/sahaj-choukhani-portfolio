@@ -1,12 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Terminal, Cpu, HardDrive } from 'lucide-react';
-import { sound } from '../../services/soundEngine';
 
 export const BedrockChasmInterstitial: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
-  const hasTriggeredAudio = useRef(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -28,18 +26,6 @@ export const BedrockChasmInterstitial: React.FC = () => {
   const textScale = useTransform(scrollYProgress, [0.25, 0.6], [0.92, 1.08]);
   const textY = useTransform(scrollYProgress, [0.25, 0.65], [30, -30]);
   const textOpacity = useTransform(scrollYProgress, [0.2, 0.4, 0.6, 0.8], [0, 1, 1, 0]);
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (v) => {
-      if (v > 0.42 && v < 0.58 && !hasTriggeredAudio.current) {
-        hasTriggeredAudio.current = true;
-        sound.playDeliberateMechanicalKey();
-      } else if (v <= 0.2 || v >= 0.8) {
-        hasTriggeredAudio.current = false;
-      }
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress]);
 
   return (
     <div 

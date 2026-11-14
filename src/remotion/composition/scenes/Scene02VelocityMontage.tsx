@@ -19,6 +19,7 @@ const SHOTS: MontageShotConfig[] = [
   {
     id: 'shot-ieee',
     imgUrl: 'photos/intro/IEEE.png',
+    secondaryImgUrl: 'photos/intro/IEEE2.png',
     isVertical: true,
     category: 'NATIONAL HACKATHON // ARENA 01',
     title: 'IEEE SYNAPSE',
@@ -125,17 +126,17 @@ const SHOTS: MontageShotConfig[] = [
     rotY: -14,
     rotX: -6,
   },
-  // Shot 10: Hyper-Speed Strobe Acceleration (162 - 180)
+  // Shot 10: Smart India Hackathon (162 - 180)
   {
-    id: 'shot-strobe',
-    imgUrl: 'photos/intro/IEEE.png',
-    isVertical: true,
-    category: 'HYPER-ACCELERATION // VELOCITY',
-    title: 'THE UNSTOPPABLE TRAJECTORY',
-    accolade: '4 STARTUPS • 4X PODIUMS • DUAL GOLD MEDALIST',
-    accentColor: '#ffffff',
-    rotY: 0,
-    rotX: 0,
+    id: 'shot-sih',
+    imgUrl: 'photos/intro/SIH.png',
+    isVertical: false,
+    category: 'NATIONAL FINALS // MINISTRY OF EDUCATION',
+    title: 'SMART INDIA HACKATHON',
+    accolade: '🇮🇳 NATIONAL ARENA // UNIVERSITY ROUND CLEARED',
+    accentColor: '#f97316',
+    rotY: 10,
+    rotX: -4,
   },
 ];
 
