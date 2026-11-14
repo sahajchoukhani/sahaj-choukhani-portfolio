@@ -33,6 +33,7 @@ import { CardSpotlight } from './ui/CardSpotlight';
 import { BorderBeam } from './ui/BorderBeam';
 import { sound } from '../services/soundEngine';
 import { AcousticWaveformVisualizer } from './cultural/AcousticWaveformVisualizer';
+import { InteractivePianoKeyboard } from './cultural/InteractivePianoKeyboard';
 
 export const CulturalStudio: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'stage' | 'soundroom' | 'poetry' | 'stories' | 'voice'>('stage');
@@ -334,6 +335,16 @@ export const CulturalStudio: React.FC = () => {
                   />
                 </div>
               </div>
+            </div>
+
+            {/* Interactive Playable Acoustic Piano Keyboard */}
+            <div className="mb-8">
+              <InteractivePianoKeyboard 
+                onNotePlay={(note) => {
+                  setCurrentTrackTitle(`Acoustic Note Resonance: ${note}`);
+                  setIsPlayingAudio(true);
+                }} 
+              />
             </div>
 
             {/* Tracklist Grid */}
