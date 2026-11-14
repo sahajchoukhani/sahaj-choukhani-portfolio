@@ -19,7 +19,7 @@ import { AfterHoursInterface } from './components/after-hours/AfterHoursInterfac
 import { HarmonicResonanceCanvas } from './components/resonance/HarmonicResonanceCanvas';
 import { SpatialResonatorCompanion } from './components/resonance/SpatialResonatorCompanion';
 import { ApertureTunnelInterstitial } from './components/interstitials/ApertureTunnelInterstitial';
-import { PrismPortalInterstitial } from './components/interstitials/PrismPortalInterstitial';
+import { TheInfiniteArchitecturalTunnel } from './components/interstitials/TheInfiniteArchitecturalTunnel';
 import { ColosseumThresholdInterstitial } from './components/interstitials/ColosseumThresholdInterstitial';
 import { ResonantSilenceInterstitial } from './components/interstitials/ResonantSilenceInterstitial';
 import { InkVoidInterstitial } from './components/interstitials/InkVoidInterstitial';
@@ -124,7 +124,7 @@ export const App: React.FC = () => {
         <ApertureTunnelInterstitial />
         <CinematicOpeningMontage />
         <AccoladesTicker />
-        <PrismPortalInterstitial />
+        <TheInfiniteArchitecturalTunnel />
         <StartupsSection />
         <ColosseumThresholdInterstitial />
         <HackathonVault />
