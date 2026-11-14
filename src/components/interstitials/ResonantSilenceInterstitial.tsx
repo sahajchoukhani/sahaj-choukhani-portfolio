@@ -124,3 +124,4 @@ export const ResonantSilenceInterstitial: React.FC = () => {
     </div>
   );
 };
+

@@ -17,6 +17,7 @@ import { Footer } from './components/Footer';
 import { CinematicIntro } from './components/CinematicIntro';
 import { AfterHoursInterface } from './components/after-hours/AfterHoursInterface';
 import { HarmonicResonanceCanvas } from './components/resonance/HarmonicResonanceCanvas';
+import { SpatialResonatorCompanion } from './components/resonance/SpatialResonatorCompanion';
 import { ApertureTunnelInterstitial } from './components/interstitials/ApertureTunnelInterstitial';
 import { PrismPortalInterstitial } from './components/interstitials/PrismPortalInterstitial';
 import { ColosseumThresholdInterstitial } from './components/interstitials/ColosseumThresholdInterstitial';
@@ -144,6 +145,9 @@ export const App: React.FC = () => {
 
       {/* Hidden Experimental Interface: AFTER HOURS (Cmd+K / Ctrl+K) */}
       <AfterHoursInterface />
+
+      {/* Signature Visual Device: The Living 3D Resonator Companion */}
+      <SpatialResonatorCompanion />
     </div>
   );
 };
