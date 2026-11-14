@@ -465,6 +465,7 @@ export const CinematicOpeningMontage: React.FC = () => {
                 glowIntensity="medium"
                 motionPersonality="energetic"
                 cropPosition="top"
+                fitMode="contain"
                 telemetryCode="NYAY // LEGAL"
                 categoryTag="VENTURE"
                 caption="Nyay Link legal strategy in chambers"

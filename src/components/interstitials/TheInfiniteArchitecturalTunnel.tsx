@@ -325,7 +325,8 @@ export const TheInfiniteArchitecturalTunnel: React.FC = () => {
     scene.add(photoGroup);
 
     FLOATING_DOSSIERS.forEach((dossier) => {
-      const planeGeo = new THREE.PlaneGeometry(2.4, 1.6);
+      const isVertical = dossier.id === 'fd-nyay' || dossier.id === 'fd-ieee';
+      const planeGeo = isVertical ? new THREE.PlaneGeometry(1.4, 2.3) : new THREE.PlaneGeometry(2.4, 1.6);
       textureLoader.load(dossier.imgUrl, (tex) => {
         tex.colorSpace = THREE.SRGBColorSpace;
         const photoMat = new THREE.MeshBasicMaterial({

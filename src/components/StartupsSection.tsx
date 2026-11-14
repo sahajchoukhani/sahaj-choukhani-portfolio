@@ -318,16 +318,24 @@ export const StartupsSection: React.FC = () => {
                 {/* 2. NYAY LINK: ADVOCATE CHAMBERS PHOTOGRAPHY + PLATFORM INTERFACE */}
                 {currentStartup.id === 'nyay-link' && (
                   <div className="w-full max-w-xl space-y-4">
-                    <div className="relative rounded-2xl overflow-hidden border border-violet-500/30 bg-black shadow-2xl group">
+                    <div className="relative rounded-2xl overflow-hidden border border-violet-500/30 bg-black/95 shadow-2xl group flex items-center justify-center min-h-[360px] sm:min-h-[420px] p-3">
+                      {/* Ambient Blurred Aura to fill lateral space */}
+                      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-25">
+                        <img
+                          src="/photos/intro/NyayLink.png"
+                          alt=""
+                          className="w-full h-full object-cover blur-3xl scale-125"
+                        />
+                      </div>
                       <img
                         src="/photos/intro/NyayLink.png"
                         alt="Sahaj in Supreme Court Advocate Chambers"
-                        className="w-full max-h-[380px] object-cover object-top transition-transform duration-700 group-hover:scale-102"
+                        className="relative z-10 max-h-[360px] sm:max-h-[420px] w-auto max-w-full object-contain rounded-xl transition-transform duration-700 group-hover:scale-[1.02]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30 pointer-events-none" />
-                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-3 py-1.5 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-xs font-mono">
-                        <span className="text-violet-300">ADVOCATE CHAMBERS CO-DESIGN</span>
-                        <span className="text-neutral-500">CONSTRUCT HACKATHON</span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none z-20" />
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-3 py-1.5 rounded-xl bg-black/85 backdrop-blur-md border border-white/10 text-xs font-mono z-30">
+                        <span className="text-violet-300 font-semibold">ADVOCATE CHAMBERS CO-DESIGN</span>
+                        <span className="text-neutral-400">AUTHENTIC 676×1130 // ZOOMED OUT</span>
                       </div>
                     </div>
 

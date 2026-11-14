@@ -208,16 +208,25 @@ export const HackathonVault: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Center Authentic Photograph */}
-                <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black aspect-[16/9] mb-5 group-hover:border-white/20 transition-all">
+                {/* Center Authentic Photograph (Zoomed out with full vertical frame visibility) */}
+                <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black/95 aspect-[16/9] sm:aspect-[16/10] mb-5 group-hover:border-white/20 transition-all flex items-center justify-center p-3">
+                  {/* Ambient Blurred Aura to fill lateral space */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+                    <img
+                      src={pav.photoSrc}
+                      alt=""
+                      className="w-full h-full object-cover blur-3xl scale-125"
+                    />
+                  </div>
                   <img
                     src={pav.photoSrc}
                     alt={pav.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                    className="relative z-10 w-auto h-full max-h-full max-w-full object-contain rounded-xl transition-transform duration-700 group-hover:scale-[1.02]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30 pointer-events-none" />
-                  <div className="absolute bottom-3 left-3 right-3 px-3 py-1.5 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-neutral-300">
-                    {pav.caption}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none z-20" />
+                  <div className="absolute bottom-3 left-3 right-3 px-3 py-1.5 rounded-xl bg-black/85 backdrop-blur-md border border-white/10 text-[11px] font-mono text-neutral-300 z-30 flex items-center justify-between">
+                    <span className="truncate mr-2">{pav.caption}</span>
+                    <span className="text-amber-400/90 shrink-0 text-[10px]">UNCROPPED // FULL FRAME</span>
                   </div>
                 </div>
 
