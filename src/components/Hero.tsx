@@ -247,18 +247,27 @@ export const Hero: React.FC = () => {
 
       {/* ------------------------------------------------------------- */}
       {/* LAYER 3: CONTROLLED SPATIAL TRANSITION INTO NEXT EXPERIENCE   */}
-      {/* Architectural conduit leading naturally into Section 02       */}
+      {/* Architectural conduit leading naturally into Section 01       */}
       {/* ------------------------------------------------------------- */}
       <div className="relative z-20 pt-6 sm:pt-8 flex flex-col items-center justify-center">
         <a
-          href="#montage"
-          onClick={() => sound.playTactileClick()}
+          href="#living-archives"
+          onClick={(e) => {
+            e.preventDefault();
+            sound.playTactileClick();
+            const el = document.getElementById('living-archives');
+            const lenis = (window as unknown as { __lenis?: { scrollTo: (target: HTMLElement, opts?: { offset?: number; duration?: number }) => void } }).__lenis;
+            if (el) {
+              if (lenis) lenis.scrollTo(el, { offset: -30, duration: 1.2 });
+              else el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
           onMouseEnter={() => sound.playHoverTone()}
-          className="group flex flex-col items-center gap-2 text-neutral-500 hover:text-amber-400 transition-colors cursor-pointer"
-          aria-label="Descend to Section 02 Chronometer"
+          className="group flex flex-col items-center gap-2 text-neutral-500 hover:text-amber-400 transition-colors cursor-pointer select-none"
+          aria-label="Descend to Section 01 The Living Archives"
         >
           <span className="text-[10px] font-mono tracking-[0.25em] text-neutral-500 group-hover:text-amber-300 uppercase transition-colors">
-            DESCENT // 02 CHRONOMETER
+            DESCENT // THE LIVING ARCHIVES
           </span>
           <div className="w-[1px] h-9 bg-gradient-to-b from-amber-500/80 via-white/20 to-transparent group-hover:h-14 transition-all duration-300" />
         </a>

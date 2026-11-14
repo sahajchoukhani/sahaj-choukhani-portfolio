@@ -17,6 +17,7 @@ export interface AdaptiveEditorialPhotoProps {
   glowIntensity?: 'subtle' | 'medium' | 'dramatic';
   motionPersonality?: MotionPersonalityType;
   cropPosition?: 'center' | 'top' | 'bottom';
+  fitMode?: 'cover' | 'contain';
   caption?: string;
   categoryTag?: string;
   telemetryCode?: string;
@@ -36,6 +37,7 @@ export const AdaptiveEditorialPhoto: React.FC<AdaptiveEditorialPhotoProps> = ({
   glowIntensity = 'subtle',
   motionPersonality = 'expressive',
   cropPosition = 'center',
+  fitMode = 'cover',
   caption,
   categoryTag,
   telemetryCode,
@@ -235,9 +237,9 @@ export const AdaptiveEditorialPhoto: React.FC<AdaptiveEditorialPhotoProps> = ({
           alt={alt}
           loading={priority ? 'eager' : 'lazy'}
           onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-cover transition-all duration-700 contrast-[1.04] brightness-[1.02] saturate-[1.03] ${getObjectPositionClass(
-            cropPosition
-          )} ${
+          className={`w-full h-full ${
+            fitMode === 'contain' ? 'object-contain p-1' : `object-cover ${getObjectPositionClass(cropPosition)}`
+          } transition-all duration-700 contrast-[1.04] brightness-[1.02] saturate-[1.03] ${
             isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-102'
           } group-hover:scale-[1.02] ${imageClassName}`}
         />

@@ -178,6 +178,7 @@ export const hackathonProjectsData: HackathonProject[] = [
     collaboratorsNote: 'Collaborative Team: DataMinors',
     myRoleAndContribution: 'Data extraction engineering, relational database schemas (SQL/MySQL), and backend Python scripting.',
     technologies: ['Python', 'SQL', 'MySQL', 'Bash'],
+    liveLink: 'https://sih2026-zeta-ruddy.vercel.app/',
     description: 'National-level hackathon. Cleared the competitive university-level evaluation round; final competition results currently pending. (No final selection or national win claimed).',
   },
   {

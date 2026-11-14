@@ -667,6 +667,55 @@ class SoundEngine {
   }
 
   /**
+   * 2b. INDIVIDUAL PIANO KEY STRIKE (PHYSICAL ACOUSTIC MODELLING)
+   * Felt hammer transient + tuned harmonic overtone series for interactive keyboard
+   */
+  public playPianoKeyNote(fundamental: number, duration: number = 1.6) {
+    if (this.isMasterMuted || this.isSfxMuted) return;
+    this.initContext();
+    if (!this.ctx || !this.sfxGain) return;
+
+    try {
+      const t = this.ctx.currentTime;
+
+      // 1. Felt hammer contact impulse
+      const felt = this.ctx.createOscillator();
+      const feltGain = this.ctx.createGain();
+      felt.type = 'triangle';
+      felt.frequency.setValueAtTime(fundamental * 0.85, t);
+      felt.frequency.exponentialRampToValueAtTime(fundamental * 0.25, t + 0.035);
+      feltGain.gain.setValueAtTime(0.18, t);
+      feltGain.gain.exponentialRampToValueAtTime(0.001, t + 0.035);
+      felt.connect(feltGain);
+      feltGain.connect(this.sfxGain);
+      felt.start(t);
+      felt.stop(t + 0.035);
+
+      // 2. 4-part acoustic harmonic overtone series
+      const harmonics = [
+        { mult: 1.0, gain: 0.32, decay: duration },
+        { mult: 2.0, gain: 0.18, decay: duration * 0.82 },
+        { mult: 3.0, gain: 0.09, decay: duration * 0.65 },
+        { mult: 4.0, gain: 0.04, decay: duration * 0.45 },
+      ];
+
+      harmonics.forEach(({ mult, gain: g, decay }) => {
+        if (!this.ctx || !this.sfxGain) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(fundamental * mult, t);
+        gain.gain.setValueAtTime(g, t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + decay);
+        osc.connect(gain);
+        gain.connect(this.sfxGain);
+        osc.start(t);
+        osc.stop(t + decay);
+      });
+    } catch {}
+  }
+
+  /**
    * 3. VIBRATING BRONZE / PIANO WIRE OSCILLATION & SHIMMER
    */
   public playBronzeWireVibration() {

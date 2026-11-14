@@ -67,6 +67,17 @@ export const AccoladesTicker: React.FC = () => {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  sound.playTactileClick();
+                  const targetId = item.href.replace('#', '');
+                  const el = document.getElementById(targetId);
+                  const lenis = (window as unknown as { __lenis?: { scrollTo: (target: HTMLElement, opts?: { offset?: number; duration?: number }) => void } }).__lenis;
+                  if (el) {
+                    if (lenis) lenis.scrollTo(el, { offset: -30, duration: 1.2 });
+                    else el.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className="block"
               >
                 <CardSpotlight

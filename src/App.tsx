@@ -14,8 +14,16 @@ import { CulturalStudio } from './components/CulturalStudio';
 import { TheShapeOfTheUnsaid } from './components/TheShapeOfTheUnsaid';
 import { TerminalMatrix } from './components/TerminalMatrix';
 import { Footer } from './components/Footer';
-import { CinematicIntro } from './components/CinematicIntro';
+import { RemotionCinematicIntro } from './components/intro/RemotionCinematicIntro';
 import { AfterHoursInterface } from './components/after-hours/AfterHoursInterface';
+import { HarmonicResonanceCanvas } from './components/resonance/HarmonicResonanceCanvas';
+import { SpatialResonatorCompanion } from './components/resonance/SpatialResonatorCompanion';
+import { ApertureTunnelInterstitial } from './components/interstitials/ApertureTunnelInterstitial';
+import { TheInfiniteArchitecturalTunnel } from './components/interstitials/TheInfiniteArchitecturalTunnel';
+import { ColosseumThresholdInterstitial } from './components/interstitials/ColosseumThresholdInterstitial';
+import { ResonantSilenceInterstitial } from './components/interstitials/ResonantSilenceInterstitial';
+import { InkVoidInterstitial } from './components/interstitials/InkVoidInterstitial';
+import { BedrockChasmInterstitial } from './components/interstitials/BedrockChasmInterstitial';
 
 export const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState<boolean>(() => {
@@ -99,9 +107,12 @@ export const App: React.FC = () => {
         <div className="absolute inset-0 bg-grain opacity-30 mix-blend-overlay" />
       </div>
 
-      {/* 22-24s Cinematic Intro Overlay */}
+      {/* Persistent Dual-Harmonic Resonance Strand (Akai Ito-inspired Visual Continuity) */}
+      <HarmonicResonanceCanvas />
+
+      {/* 23.5s Shared Remotion Cinematic Intro ("THE MAKING OF SAHAJ") */}
       {showIntro && (
-        <CinematicIntro onComplete={handleIntroComplete} />
+        <RemotionCinematicIntro onComplete={handleIntroComplete} />
       )}
 
       {/* Master Navbar with Live Sound Engine Controller & Replay Intro Button */}
@@ -110,16 +121,22 @@ export const App: React.FC = () => {
       {/* Main Flow */}
       <main className="flex-1 relative z-10">
         <Hero />
+        <ApertureTunnelInterstitial />
         <CinematicOpeningMontage />
         <AccoladesTicker />
+        <TheInfiniteArchitecturalTunnel />
         <StartupsSection />
+        <ColosseumThresholdInterstitial />
         <HackathonVault />
         <HackathonShowcase />
         <SoloEngineeringSection />
         <ProjectArchiveSection />
         <Interactive3DGallery />
+        <ResonantSilenceInterstitial />
         <CulturalStudio />
+        <InkVoidInterstitial />
         <TheShapeOfTheUnsaid />
+        <BedrockChasmInterstitial />
         <TerminalMatrix />
       </main>
 
@@ -128,6 +145,9 @@ export const App: React.FC = () => {
 
       {/* Hidden Experimental Interface: AFTER HOURS (Cmd+K / Ctrl+K) */}
       <AfterHoursInterface />
+
+      {/* Signature Visual Device: The Living 3D Resonator Companion */}
+      <SpatialResonatorCompanion />
     </div>
   );
 };
