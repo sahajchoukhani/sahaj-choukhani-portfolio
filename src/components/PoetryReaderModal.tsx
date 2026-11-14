@@ -227,21 +227,42 @@ export const PoetryReaderModal: React.FC<PoetryReaderModalProps> = ({ poem, onCl
               </div>
 
               {/* Stanzas Display: Exact Stanza Breaks & Line Breaks */}
-              <div className="space-y-10 text-neutral-100 font-sans text-base sm:text-lg leading-relaxed sm:leading-loose tracking-wide pl-3 sm:pl-8 border-l border-amber-500/25">
-                {poem.stanzas.map((stanza, sIdx) => (
-                  <div key={sIdx} className="space-y-2">
-                    {stanza.map((line, lIdx) => (
-                      <p key={lIdx} className="text-neutral-100 font-light">
-                        {line}
-                      </p>
-                    ))}
-                  </div>
-                ))}
+              <div className="space-y-12 pl-4 sm:pl-10 border-l-2 border-gradient-to-b border-amber-500/40 relative">
+                <div className="absolute -left-1 top-0 w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.8)]" />
+                {poem.stanzas.map((stanza, sIdx) => {
+                  const isSingleCredo = stanza.length === 1;
+                  return (
+                    <div 
+                      key={sIdx} 
+                      className={`space-y-3 ${
+                        isSingleCredo 
+                          ? 'pt-4 border-t border-amber-500/20 text-center sm:text-left' 
+                          : ''
+                      }`}
+                    >
+                      {stanza.map((line, lIdx) => (
+                        <p 
+                          key={lIdx} 
+                          className={`font-serif italic leading-relaxed sm:leading-loose tracking-wide ${
+                            isSingleCredo
+                              ? 'text-xl sm:text-2xl md:text-3xl text-amber-200 font-normal drop-shadow-[0_0_20px_rgba(245,158,11,0.25)]'
+                              : 'text-base sm:text-xl md:text-[22px] text-neutral-100 font-light'
+                          }`}
+                        >
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  );
+                })}
 
                 {/* Author Signature */}
                 {poem.signature && (
-                  <div className="pt-6 text-right sm:text-left">
-                    <span className="font-mono text-sm tracking-widest text-amber-300/90 font-medium">
+                  <div className="pt-8 text-right sm:text-left border-t border-white/5 flex items-center justify-between">
+                    <span className="font-mono text-xs text-neutral-500">
+                      Anthology Manuscript
+                    </span>
+                    <span className="font-mono text-sm tracking-widest text-amber-300 font-semibold">
                       {poem.signature}
                     </span>
                   </div>
@@ -251,19 +272,26 @@ export const PoetryReaderModal: React.FC<PoetryReaderModalProps> = ({ poem, onCl
               {/* Editorial Footer Note */}
               <footer className="pt-10 border-t border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500">
                 <span>The Poetry Vault &bull; Sahaj</span>
-                <span className="text-neutral-400">Preserved in Originality</span>
+                <span className="text-amber-400/80">Preserved in Originality</span>
               </footer>
             </article>
           ) : (
             /* Manuscript View Mode */
-            <div className="max-w-xl mx-auto py-8 text-center space-y-6">
+            <div className="max-w-2xl mx-auto py-6 space-y-6 text-center">
               {poem.manuscriptImageUrl ? (
-                <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                  <img 
-                    src={poem.manuscriptImageUrl} 
-                    alt={`Handwritten manuscript for ${poem.title}`}
-                    className="w-full h-auto object-cover"
-                  />
+                <div className="space-y-4">
+                  <div className="rounded-3xl overflow-hidden border border-amber-500/30 shadow-[0_20px_60px_rgba(0,0,0,0.9)] bg-neutral-950 p-2 sm:p-4 relative group">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-10" />
+                    <img 
+                      src={poem.manuscriptImageUrl} 
+                      alt={`Original handwritten manuscript for ${poem.title}`}
+                      className="w-full h-auto max-h-[70vh] object-contain rounded-2xl mx-auto transition-transform duration-500 group-hover:scale-[1.01]"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between px-4 text-xs font-mono text-neutral-400">
+                    <span className="text-amber-400 font-medium">AUTHENTIC MANUSCRIPT ARCHIVE</span>
+                    <span>NOCTURNAL RAIN SCAN // 300 DPI</span>
+                  </div>
                 </div>
               ) : (
                 <div className="p-10 rounded-2xl bg-neutral-950/70 border border-white/10 font-mono text-xs text-neutral-400 space-y-4">

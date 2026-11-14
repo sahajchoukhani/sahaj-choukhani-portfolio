@@ -283,34 +283,62 @@ export const StartupsSection: React.FC = () => {
 
               {/* RIGHT COLUMN: REVENUE / ARCHITECTURE STAGE (CUSTOM TO EACH VENTURE) */}
               <div className="relative z-10 lg:col-span-6 flex items-center justify-center">
-                {/* 1. DRUSAVI: THE SOFTWARE ENTERPRISE BLUEPRINT */}
+                {/* 1. DRUSAVI: THE SOFTWARE ENTERPRISE BRAND VISUAL & BLUEPRINT */}
                 {currentStartup.id === 'drusavi' && (
-                  <div className="w-full max-w-lg p-6 sm:p-8 rounded-3xl bg-neutral-950/70 border border-cyan-500/30 backdrop-blur-xl shadow-2xl space-y-6">
-                    <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                      <span className="text-xs font-mono text-cyan-400 tracking-wider flex items-center gap-1.5">
-                        <Terminal className="w-4 h-4" />
-                        <span>CORE ARCHITECTURE SCHEMATIC</span>
-                      </span>
-                      <span className="text-[10px] font-mono text-neutral-500">v2.4 STABLE</span>
+                  <div className="w-full max-w-xl space-y-4">
+                    {/* Drusavi 3D Brand & Platform Identity Canvas */}
+                    <div className="relative rounded-2xl overflow-hidden border border-emerald-500/30 bg-black shadow-2xl group flex items-center justify-center min-h-[260px] sm:min-h-[320px] p-2">
+                      {/* Ambient Blurred Aura */}
+                      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+                        <img
+                          src="/photos/previews/drusavi_preview.jpg"
+                          alt=""
+                          className="w-full h-full object-cover blur-2xl scale-110"
+                        />
+                      </div>
+                      <img
+                        src="/photos/previews/drusavi_preview.jpg"
+                        alt="Drusavi Brand Identity & Enterprise Architecture"
+                        className="relative z-10 w-full h-auto max-h-[320px] object-contain rounded-xl transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20 pointer-events-none z-20" />
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-3 py-1.5 rounded-xl bg-black/85 backdrop-blur-md border border-white/10 text-xs font-mono z-30">
+                        <span className="text-emerald-300 font-semibold flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                          <span>DRUSAVI // ENTERPRISE PLATFORM</span>
+                        </span>
+                        <span className="text-neutral-400">FOUNDER // 10–15 CORE TEAM</span>
+                      </div>
                     </div>
 
-                    <div className="space-y-4 font-mono text-xs">
-                      <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between">
-                        <span className="text-neutral-400">LEADERSHIP ROLE:</span>
-                        <span className="text-white font-bold">FOUNDER</span>
+                    {/* Architecture Schematic */}
+                    <div className="p-5 sm:p-6 rounded-2xl bg-neutral-950/70 border border-emerald-500/20 backdrop-blur-xl shadow-2xl space-y-3.5">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                        <span className="text-xs font-mono text-emerald-400 tracking-wider flex items-center gap-1.5">
+                          <Terminal className="w-4 h-4" />
+                          <span>CORE ARCHITECTURE SCHEMATIC</span>
+                        </span>
+                        <span className="text-[10px] font-mono text-neutral-500">v2.4 STABLE</span>
                       </div>
-                      <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between">
-                        <span className="text-neutral-400">ORGANIZATIONAL SCALE:</span>
-                        <span className="text-cyan-300 font-bold">10–15 CORE ENGINEERS</span>
-                      </div>
-                      <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between">
-                        <span className="text-neutral-400">CORE RESPONSIBILITY:</span>
-                        <span className="text-amber-300 font-bold">PRODUCT STRATEGY & DB DESIGN</span>
-                      </div>
-                    </div>
 
-                    <div className="p-4 rounded-xl bg-cyan-950/20 border border-cyan-500/20 text-xs text-neutral-300 font-sans leading-relaxed">
-                      "Enterprise-grade platform conceptualization designed for high concurrency and robust relational data models."
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 font-mono text-xs">
+                        <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col justify-center">
+                          <span className="text-[10px] text-neutral-500">LEADERSHIP</span>
+                          <span className="text-white font-bold">FOUNDER</span>
+                        </div>
+                        <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col justify-center">
+                          <span className="text-[10px] text-neutral-500">ORGANIZATION</span>
+                          <span className="text-emerald-300 font-bold">10–15 CORE ENGINEERS</span>
+                        </div>
+                        <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col justify-center">
+                          <span className="text-[10px] text-neutral-500">RESPONSIBILITY</span>
+                          <span className="text-amber-300 font-bold">PRODUCT & DB DESIGN</span>
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/20 text-xs text-neutral-300 font-sans leading-relaxed">
+                        "Enterprise-grade platform conceptualization designed for high concurrency and robust relational data models."
+                      </div>
                     </div>
                   </div>
                 )}

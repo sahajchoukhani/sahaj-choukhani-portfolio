@@ -124,17 +124,17 @@ export const poetryVaultData: Poem[] = [
   {
     id: 'a-restless-shelf',
     title: 'A Restless Shelf',
-    isWorkingTitle: true,
+    isWorkingTitle: false,
     author: 'SAHAJ',
     themeDescription: 'recognition, comparison, ambition and becoming',
     signature: '~ SAHAJ',
-    hasAudioRecording: false, // Spoken-word audio can be attached when recorded
-    spokenWordAudio: undefined, // Path to file in /07_Music_Sounds/ e.g. '/sounds/a-restless-shelf.mp3'
-    manuscriptImageUrl: undefined, // Path to scan in /01_My_Photos/
+    hasAudioRecording: false,
+    spokenWordAudio: undefined,
+    manuscriptImageUrl: '/photos/intro/Poet1.png',
     stanzas: [
       [
         'Amidst four familiar voices, I thought I’d earned my place,',
-        'Yet quiet choices shift the room without a word or trace.',
+        'Yet quiet choices shift the room without a single trace.',
         'A name once spoken out of pride now lingers on a screen,',
         'And what I took for loyalty turns sharp with what it means.',
       ],
@@ -145,10 +145,10 @@ export const poetryVaultData: Poem[] = [
         'Four trophies on a restless shelf, and emptiness inside.',
       ],
       [
-        'The curtains rose, I found my lines, the applause came right along,',
+        'The curtains rose, I found my cues, the applause came right along,',
         'Yet somewhere past the final act, I wondered where I belonged.',
         'I’ve chased a thousand open doors, mistaken drift for flight,',
-        'Built castles out of borrowed dreams and claimed the stars as mine.',
+        'Built castles out of borrowed dreams and claimed the stars of night.',
       ],
       [
         'A venture still upon the clouds, all talk before the climb,',
@@ -159,12 +159,46 @@ export const poetryVaultData: Poem[] = [
       [
         'For what are all these victories if nothing makes me grow?',
         'And what is being someone, if there’s nothing real to show?',
-        'So let the unsent words dissolve, let bitterness fade through—',
+        'So let the unsent words dissolve, let bitterness fall through—',
         'I have a little less to prove, and much more left to do.',
       ],
       [
         'And when the lights have settled and the crowd has walked away,',
         'I hope to be a person worth the things I dare to claim today.',
+      ],
+    ],
+  },
+  {
+    id: 'the-shape-of-the-unsaid',
+    title: 'The Shape of the Unsaid',
+    isWorkingTitle: false,
+    author: 'SAHAJ',
+    themeDescription: 'silence, creation, resonance and what remains unuttered',
+    signature: '~ SAHAJ',
+    hasAudioRecording: false,
+    spokenWordAudio: undefined,
+    manuscriptImageUrl: '/photos/intro/Poet1.png',
+    stanzas: [
+      [
+        'Between the hammer and the wire, before the sound is born,',
+        'There lies a breath of quiet grief that never has been worn.',
+        'A hundred lines of compiled code, a hundred nights awake,',
+        'Yet every structure carries weight no grammar could remake.',
+      ],
+      [
+        'They ask what makes an artist stand before an empty page,',
+        'Or what could push an architect onto a blinding stage—',
+        'It isn’t glory, gold, or praise, nor hunger for the light,',
+        'It is the terror of the truth that whispers in the night.',
+      ],
+      [
+        'For words are fragile vessels for the oceans that we keep,',
+        'And half of who we truly are is buried far too deep.',
+        'So when the logic fails my tongue and explanation dies,',
+        'I build the chord, I strike the key, and watch the temple rise.',
+      ],
+      [
+        'I give form to what I cannot explain.',
       ],
     ],
   },
