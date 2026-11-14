@@ -11,8 +11,8 @@ export const startupsData: Startup[] = [
     description: 'Venture founded by Sahaj, leading product strategy, software architecture, and development alongside a core team of approximately 10–15 people.',
     technologies: ['Software Architecture', 'Full-Stack Engineering', 'Database Design'],
     websiteUrl: undefined, // Public deployment in active preparation
-    previewImage: undefined,
-    hasGenuineImage: false,
+    previewImage: '/photos/previews/drusavi_preview.jpg',
+    hasGenuineImage: true,
     logoUrl: undefined,
     socialUrl: undefined,
   },

@@ -65,6 +65,16 @@ const FLOATING_DOSSIERS: FloatingDossier[] = [
     yOffset: 0.6,
     tag: 'THE ARENA // IIM PODIUM',
   },
+  {
+    id: 'fd-sih',
+    title: 'Smart India Hackathon',
+    category: 'NATIONAL ARENA // MINISTRY OF EDUCATION',
+    imgUrl: '/photos/intro/SIH.png',
+    zPos: -78,
+    xOffset: -3.4,
+    yOffset: 0.4,
+    tag: 'THE ARENA // SIH FINALS',
+  },
 ];
 
 export const TheInfiniteArchitecturalTunnel: React.FC = () => {
@@ -73,10 +83,6 @@ export const TheInfiniteArchitecturalTunnel: React.FC = () => {
   const [isReducedMotion, setIsReducedMotion] = useState(false);
   const [hudPhase, setHudPhase] = useState<'disassemble' | 'transit' | 'reveal'>('disassemble');
   const [scrollVelocityDisplay, setScrollVelocityDisplay] = useState(0);
-
-  const soundTriggeredPhase1Ref = useRef(false);
-  const soundTriggeredPhase2Ref = useRef(false);
-  const soundTriggeredPhase3Ref = useRef(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -90,30 +96,16 @@ export const TheInfiniteArchitecturalTunnel: React.FC = () => {
     offset: ['start start', 'end end'],
   });
 
-  // Track progress and update audio/HUD
+  // Track progress and update HUD phase without unexpected audio playback on scroll
   useEffect(() => {
     const unsub = scrollYProgress.on('change', (progress) => {
       // Phase detection
       if (progress < 0.22) {
         setHudPhase('disassemble');
-        if (!soundTriggeredPhase1Ref.current && progress > 0.05) {
-          soundTriggeredPhase1Ref.current = true;
-          sound.playTightTransitionSwish();
-        }
       } else if (progress < 0.78) {
         setHudPhase('transit');
-        soundTriggeredPhase1Ref.current = false;
-        if (!soundTriggeredPhase2Ref.current && progress > 0.45) {
-          soundTriggeredPhase2Ref.current = true;
-          sound.playSubBassPunch(55);
-        }
       } else {
         setHudPhase('reveal');
-        soundTriggeredPhase2Ref.current = false;
-        if (!soundTriggeredPhase3Ref.current && progress > 0.85) {
-          soundTriggeredPhase3Ref.current = true;
-          sound.playTheatricalWarmSwell();
-        }
       }
 
       setScrollVelocityDisplay(Math.round(progress * 100));

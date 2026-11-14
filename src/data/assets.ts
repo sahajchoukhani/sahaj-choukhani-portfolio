@@ -110,8 +110,8 @@ export const theatreVideoData: TheatreVideoAsset = {
   accolade: '🥉 3rd Place Podium — State / Inter-Collegiate Competition',
   description: 'Full live theatre production recording. Showcasing character embodiment, dramatic tension, physical presence, and ensemble stagecraft before a live collegiate audience.',
   recordedContext: 'Recorded live on stage during state inter-collegiate theatre competition.',
-  videoSrc: undefined, // Sahaj can drop file in /public/videos/theatre-performance.mp4
+  videoSrc: '/videos/theatre-performance.mp4',
   posterSrc: '/photos/intro/Theatre1.png', // Authentic stage performance still
-  hasVideoAttached: false, // Flips to true when video file is linked
+  hasVideoAttached: true,
 };
 

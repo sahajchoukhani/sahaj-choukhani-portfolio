@@ -143,30 +143,30 @@ class SoundEngine {
   }
 
   // -------------------------------------------------------------
-  // PROCEDURAL SOUND EFFECTS (SFX BUS)
+  // PROCEDURAL SOUND EFFECTS (SFX BUS) - REFINED & LUXURY TUNED
   // -------------------------------------------------------------
   public playKeyClick() {
     if (this.isMasterMuted || this.isSfxMuted) return;
     this.initContext();
     if (!this.ctx || !this.sfxGain) return;
 
+    // Organic, warm, low-frequency felt mechanical key tap
     const t = this.ctx.currentTime;
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
 
-    const pitch = 1800 + Math.random() * 400;
     osc.type = 'triangle';
-    osc.frequency.setValueAtTime(pitch, t);
-    osc.frequency.exponentialRampToValueAtTime(300, t + 0.03);
+    osc.frequency.setValueAtTime(260, t);
+    osc.frequency.exponentialRampToValueAtTime(90, t + 0.025);
 
-    gain.gain.setValueAtTime(0.04, t);
-    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.03);
+    gain.gain.setValueAtTime(0.018, t);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.025);
 
     osc.connect(gain);
     gain.connect(this.sfxGain);
 
     osc.start(t);
-    osc.stop(t + 0.03);
+    osc.stop(t + 0.025);
   }
 
   public playTactileClick() {
@@ -174,45 +174,28 @@ class SoundEngine {
     this.initContext();
     if (!this.ctx || !this.sfxGain) return;
 
+    // Ultra-subtle haptic micro-tap (120Hz luxury watch bezel click)
     const t = this.ctx.currentTime;
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
 
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(600, t);
-    osc.frequency.exponentialRampToValueAtTime(150, t + 0.05);
-
-    gain.gain.setValueAtTime(0.08, t);
-    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.05);
-
-    osc.connect(gain);
-    gain.connect(this.sfxGain);
-
-    osc.start(t);
-    osc.stop(t + 0.05);
-  }
-
-  public playHoverTone() {
-    if (this.isMasterMuted || this.isSfxMuted) return;
-    this.initContext();
-    if (!this.ctx || !this.sfxGain) return;
-
-    const t = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(880, t);
-    osc.frequency.exponentialRampToValueAtTime(1200, t + 0.04);
+    osc.frequency.setValueAtTime(140, t);
+    osc.frequency.exponentialRampToValueAtTime(60, t + 0.015);
 
     gain.gain.setValueAtTime(0.02, t);
-    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.015);
 
     osc.connect(gain);
     gain.connect(this.sfxGain);
 
     osc.start(t);
-    osc.stop(t + 0.04);
+    osc.stop(t + 0.015);
+  }
+
+  // Hover tone permanently silenced: eliminated irritating UI hover chirps site-wide
+  public playHoverTone() {
+    // Deliberately no-op to maintain quiet, refined browsing experience
   }
 
   public playModalWhoosh() {

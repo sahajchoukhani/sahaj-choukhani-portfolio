@@ -411,8 +411,8 @@ export const CulturalStudio: React.FC = () => {
               </div>
             </div>
 
-            {/* Interactive Reader Card */}
-            <div className="lg:col-span-7">
+            {/* Interactive Reader Cards (Anthology Stack) */}
+            <div className="lg:col-span-7 space-y-6">
               {poetryVaultData.map((poem) => (
                 <CardSpotlight
                   key={poem.id}
@@ -422,16 +422,20 @@ export const CulturalStudio: React.FC = () => {
                     sound.playTactileClick();
                     setSelectedPoem(poem);
                   }}
-                  className="group glass-panel-elevated rounded-3xl p-8 border border-white/10 hover:border-amber-400/40 transition-all duration-300 cursor-pointer flex flex-col justify-between transform hover:-translate-y-1 hover:shadow-2xl relative"
+                  className="group glass-panel-elevated rounded-3xl p-7 sm:p-8 border border-white/10 hover:border-amber-400/40 transition-all duration-300 cursor-pointer flex flex-col justify-between transform hover:-translate-y-1 hover:shadow-2xl relative"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between mb-3">
                       <span className="text-xs font-mono px-3 py-1 rounded-full bg-amber-950/40 border border-amber-500/30 text-amber-300 font-semibold">
-                        BY {poem.author}
+                        ORIGINAL ANTHOLOGY &bull; {poem.author}
                       </span>
-                      {poem.isWorkingTitle && (
+                      {poem.isWorkingTitle ? (
                         <span className="text-[10px] font-mono text-neutral-400 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10">
                           Working Title
+                        </span>
+                      ) : (
+                        <span className="text-[10px] font-mono text-amber-400/80 bg-amber-950/20 px-2.5 py-0.5 rounded-full border border-amber-500/20">
+                          Manuscript Preserved
                         </span>
                       )}
                     </div>
@@ -445,16 +449,16 @@ export const CulturalStudio: React.FC = () => {
                     </p>
 
                     {/* Poetry Excerpt Preview */}
-                    <div className="p-5 rounded-2xl bg-neutral-950/80 border border-white/5 font-sans text-xs sm:text-sm text-neutral-200 italic space-y-1.5 mb-6 border-l-2 border-l-amber-400/60 pl-4 leading-relaxed">
+                    <div className="p-4 sm:p-5 rounded-2xl bg-neutral-950/80 border border-white/5 font-serif text-sm sm:text-base text-neutral-200 italic space-y-1.5 mb-5 border-l-2 border-l-amber-400/70 pl-4 leading-relaxed">
                       <p>"{poem.stanzas[0]?.[0]}"</p>
                       <p>"{poem.stanzas[0]?.[1]}"</p>
                       <p className="text-neutral-500 not-italic pt-1 font-mono text-[11px]">
-                        + 5 more stanzas in full reader
+                        + {poem.stanzas.length - 1} more stanzas in full reader
                       </p>
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-amber-400 group-hover:text-amber-300">
+                  <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono text-amber-400 group-hover:text-amber-300">
                     <span className="font-semibold">Open Distraction-Free Reader</span>
                     <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -463,8 +467,10 @@ export const CulturalStudio: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl glass-panel border border-dashed border-white/10 text-center font-mono text-xs text-neutral-400">
-            <span>Ready for your original poetry. Easily append new poems inside <code className="text-amber-300">src/data/culturalStudio.ts</code> without touching any code.</span>
+          <div className="p-5 rounded-2xl glass-panel border border-amber-500/20 text-center font-serif italic text-sm text-neutral-300 max-w-2xl mx-auto flex items-center justify-center gap-3">
+            <span className="text-amber-400 font-mono not-italic text-xs">✦</span>
+            <span>"I give form to what I cannot explain." &bull; The Poetry Vault</span>
+            <span className="text-amber-400 font-mono not-italic text-xs">✦</span>
           </div>
         </div>
       )}

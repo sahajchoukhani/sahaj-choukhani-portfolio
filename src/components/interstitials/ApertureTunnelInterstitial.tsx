@@ -1,12 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Camera, Sparkles, Compass } from 'lucide-react';
-import { sound } from '../../services/soundEngine';
 
 export const ApertureTunnelInterstitial: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
-  const hasTriggeredAudio = useRef(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -33,19 +31,6 @@ export const ApertureTunnelInterstitial: React.FC = () => {
   // Light leak sweep
   const lightLeakX = useTransform(scrollYProgress, [0.2, 0.7], ['-100%', '200%']);
   const lightLeakOpacity = useTransform(scrollYProgress, [0.3, 0.5, 0.7], [0, 0.45, 0]);
-
-  // Trigger camera shutter audio near the lens threshold
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (v) => {
-      if (v > 0.4 && v < 0.6 && !hasTriggeredAudio.current) {
-        hasTriggeredAudio.current = true;
-        sound.playCameraShutter();
-      } else if (v <= 0.2 || v >= 0.8) {
-        hasTriggeredAudio.current = false;
-      }
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress]);
 
   return (
     <div 
