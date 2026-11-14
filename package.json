@@ -7,9 +7,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "render:intro": "remotion render src/remotion/index.ts TheMakingOfSahaj out/the-making-of-sahaj.mp4",
+    "render:intro:still": "remotion still src/remotion/index.ts TheMakingOfSahaj out/the-making-of-sahaj-poster.jpg --frame=630",
+    "remotion:studio": "remotion studio src/remotion/index.ts"
   },
   "dependencies": {
+    "@remotion/cli": "^4.0.543",
+    "@remotion/player": "^4.0.543",
     "@types/three": "^0.187.0",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
@@ -19,6 +24,7 @@
     "lucide-react": "^1.72.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "remotion": "^4.0.543",
     "tailwind-merge": "^3.7.0",
     "three": "^0.187.0"
   },

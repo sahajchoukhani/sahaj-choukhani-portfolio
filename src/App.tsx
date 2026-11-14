@@ -14,7 +14,7 @@ import { CulturalStudio } from './components/CulturalStudio';
 import { TheShapeOfTheUnsaid } from './components/TheShapeOfTheUnsaid';
 import { TerminalMatrix } from './components/TerminalMatrix';
 import { Footer } from './components/Footer';
-import { CinematicIntro } from './components/CinematicIntro';
+import { RemotionCinematicIntro } from './components/intro/RemotionCinematicIntro';
 import { AfterHoursInterface } from './components/after-hours/AfterHoursInterface';
 import { HarmonicResonanceCanvas } from './components/resonance/HarmonicResonanceCanvas';
 import { SpatialResonatorCompanion } from './components/resonance/SpatialResonatorCompanion';
@@ -110,9 +110,9 @@ export const App: React.FC = () => {
       {/* Persistent Dual-Harmonic Resonance Strand (Akai Ito-inspired Visual Continuity) */}
       <HarmonicResonanceCanvas />
 
-      {/* 22-24s Cinematic Intro Overlay */}
+      {/* 23.5s Shared Remotion Cinematic Intro ("THE MAKING OF SAHAJ") */}
       {showIntro && (
-        <CinematicIntro onComplete={handleIntroComplete} />
+        <RemotionCinematicIntro onComplete={handleIntroComplete} />
       )}
 
       {/* Master Navbar with Live Sound Engine Controller & Replay Intro Button */}
